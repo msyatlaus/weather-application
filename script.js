@@ -51,7 +51,6 @@ $(document).ready(function () {
     $(document).on("click", ".history-item", function () {
       var liCity = $(this).text().trim();
       cityWeather(liCity);
-      
     });
     cityWeather(cityInput);
   });
