@@ -47,7 +47,7 @@ $(document).ready(function () {
     cityWeather(cityInput);
   });
 
-  function cityForecast(city) {
+  function weatherForecast(city) {
     var queryURL =
       "https://api.openweathermap.org/data/2.5/forecast?q=" + city + APIKey;
     $.ajax({
@@ -59,12 +59,12 @@ $(document).ready(function () {
       },
     });
   }
-  cityForecast(city);
+  weatherForecast(city);
 });
 
-$( "#cityInput").change(function() {
-    $( "<p>The text has changed.</p>" ).appendTo( "body" );
-  });
+$("#cityInput").change(function () {
+  $("<p>The text has changed.</p>").appendTo("body");
+});
 
 function cityUVIndex(lat, lon) {
   $.ajax({
