@@ -1,6 +1,7 @@
 var APIKey = "&appid=ade2bb7e46d866c6271ae23428c893bc";
 
 $(document).ready(function () {
+  var searchCities = [];
   $("#citySearch").on("click", function () {
     event.preventDefault();
     var cityInput = $("#cityInput").val().trim();
@@ -18,6 +19,9 @@ $(document).ready(function () {
         dataType: "json",
         success: function (data) {
           $("#cityInput").empty();
+          searchCities.unshift(city);
+          console.log(searchCities);
+          printCitiesList(searchCities);
 
           // variables to store cityName, cityTemp, cityHumid, cityWind, cityUV
           var cityName = $(".cityName").html("#cityDiv").text(city);
@@ -44,6 +48,11 @@ $(document).ready(function () {
         },
       });
     }
+    $(document).on("click", ".history-item", function () {
+      var liCity = $(this).text().trim();
+      cityWeather(liCity);
+      
+    });
     cityWeather(cityInput);
   });
 
@@ -62,9 +71,9 @@ $(document).ready(function () {
   weatherForecast(city);
 });
 
-$("#cityInput").change(function () {
-  $("<p>The text has changed.</p>").appendTo("body");
-});
+// $(“#cityInput”).change(function() {
+//     $( “<p>The text has changed.</p>” ).appendTo( “body” );
+//   });
 
 function cityUVIndex(lat, lon) {
   $.ajax({
@@ -90,4 +99,16 @@ function cityUVIndex(lat, lon) {
       }
     },
   });
+}
+{
+  /* <li class='history-item'>City 1</li> */
+}
+function printCitiesList(cities) {
+  $(".searchHistory").empty();
+  for (let index = 0; index < cities.length; index++) {
+    var liEl = $("<li>");
+    liEl.addClass("history-item");
+    liEl.text(cities[index]);
+    $(".searchHistory").append(liEl);
+  }
 }
