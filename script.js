@@ -62,6 +62,10 @@ $(document).ready(function () {
   cityForecast(city);
 });
 
+$( "#cityInput").change(function() {
+    $( "<p>The text has changed.</p>" ).appendTo( "body" );
+  });
+
 function cityUVIndex(lat, lon) {
   $.ajax({
     type: "GET",
