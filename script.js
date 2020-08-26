@@ -73,16 +73,16 @@ function cityUVIndex(lat, lon) {
 
       if (data.value <= 3) {
         cityUV.addClass("btn-success");
-        $("#cityDiv").append(cityUV.append(cityUV));
+        $("#infoCity").append(cityUV.append(cityUV));
       } else if (data.value <= 6) {
         cityUV.addClass("btn-warning");
-        $("#cityDiv").append(cityUV.append(cityUV));
+        $("#infoCity").append(cityUV.append(cityUV));
       } else if (data.value <= 11) {
         cityUV.addClass("btn-danger");
-        $("#cityDiv").append(cityUV.append(cityUV));
+        $("#infoCity").append(cityUV.append(cityUV));
       } else {
         cityUV.addClass("btn-info");
-        $("#cityDiv").append(cityUV.append(cityUV));
+        $("#infoCity").append(cityUV.append(cityUV));
       }
     },
   });
