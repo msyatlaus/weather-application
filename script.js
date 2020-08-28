@@ -26,7 +26,6 @@ $(document).ready(function () {
           console.log(searchCities);
           printCitiesList(searchCities);
 
-          // variables to store cityName, cityTemp, cityHumid, cityWind, cityUV
           var cityName = $(".cityName").html("#cityDiv").text(city);
           var cityTemp = $(".cityTemp")
             .html("#cityDiv")
@@ -41,12 +40,12 @@ $(document).ready(function () {
           var cityHumid = $(".cityHum")
             .html("#cityDiv")
             .text("Humidity: " + data.main.humidity + "%");
-          // var cityUV = $(".cityUV").html("#cityDiv").text("UV Index: " + data.)
+
           var weatherIcon = $(".weatherIcon").attr(
             "src",
             "https://openweatherapp.org/img/w/" + data.weather[0].icon + ".png"
           );
-          // console.log(data.coord.lat, data.coord.lon);
+
           cityUVIndex(data.coord.lat, data.coord.lon);
         },
       });
