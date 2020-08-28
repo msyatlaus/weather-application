@@ -1,7 +1,6 @@
 var APIKey = "&appid=ade2bb7e46d866c6271ae23428c893bc";
-
+var searchCities = [];
 $(document).ready(function () {
-  var searchCities = [];
   $("#citySearch").on("click", function () {
     event.preventDefault();
     var cityInput = $("#cityInput").val().trim();
@@ -19,7 +18,11 @@ $(document).ready(function () {
         dataType: "json",
         success: function (data) {
           $("#cityInput").empty();
-          searchCities.unshift(city);
+
+          console.log(searchCities.indexOf(city));
+          if (searchCities.indexOf(city) == -1) {
+            searchCities.unshift(city);
+          }
           console.log(searchCities);
           printCitiesList(searchCities);
 
@@ -108,6 +111,7 @@ function printCitiesList(cities) {
     var liEl = $("<li>");
     liEl.addClass("history-item");
     liEl.text(cities[index]);
+
     $(".searchHistory").append(liEl);
   }
 }
